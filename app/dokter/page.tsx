@@ -1,6 +1,6 @@
-import ContactTable from "../components/contact-table";
 import Search from "../components/search";
 import { CreateButton } from "../components/buttons";
+import DokterTable from "../components/dokter-table";
 
 const page = () => {
   return (
@@ -9,7 +9,7 @@ const page = () => {
         <Search />
         <CreateButton />
       </div>
-      <ContactTable />
+      <DokterTable />
     </div>
   );
 };

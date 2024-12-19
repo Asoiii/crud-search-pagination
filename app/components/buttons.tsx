@@ -4,11 +4,12 @@ import Link from "next/link";
 import { IoAddSharp, IoPencil, IoTrashOutline } from "react-icons/io5";
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
+import { deleteDokter } from "@/lib/actions";
 
 export const CreateButton = () => {
   return (
     <Link
-      href="/contacts/create"
+      href="/dokter/create"
       className="inline-flex items-center space-x-1 text-white bg-blue-700 hover:bg-blue-800 px-5 py-[9px] rounded-sm text-sm"
     >
       <IoAddSharp size={20} />
@@ -17,19 +18,24 @@ export const CreateButton = () => {
   );
 };
 
-export const EditButton = () => {
+export const EditButton = ({ id }: { id: string }) => {
   return (
-    <button className="rounded-sm border p-1 hover:bg-gray-100">
-      <IoPencil size={20} />
-    </button>
+    <Link href={`/dokter/edit/${id}`}>
+      <button className="rounded-sm border p-1 hover:bg-gray-100">
+        <IoPencil size={20} />
+      </button>
+    </Link>
   );
 };
 
-export const DeleteButton = () => {
+export const DeleteButton = ({ id }: { id: string }) => {
+  const DeleteDokterWithId = deleteDokter.bind(null, id);
   return (
-    <button className="rounded-sm border p-1 hover:bg-red-50">
-      <IoTrashOutline size={20} />
-    </button>
+    <form action={DeleteDokterWithId}>
+      <button className="rounded-sm border p-1 hover:bg-red-50">
+        <IoTrashOutline size={20} />
+      </button>
+    </form>
   );
 };
 
